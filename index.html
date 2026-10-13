@@ -1,0 +1,27 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TATS · Reposição</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<div id="login" class="login"><div class="logo big">TATS</div><p>Reposição</p><input id="em" type="email" placeholder="e-mail"><input id="pw" type="password" placeholder="senha"><button id="go">Entrar</button><small id="err"></small></div>
+<div id="app" hidden>
+<header><div class="logo">TATS</div><nav><button data-tab="repo" class="on">Reposição</button><button data-tab="rel">Relatório</button><button data-tab="prod">Produtos</button></nav><button id="out" class="ghost">Sair</button></header>
+<main>
+<section id="repo">
+<div class="panel"><div class="form">
+<label>Data<input id="fData" type="date"></label>
+<label class="wide">Produto<select id="fProd"></select></label>
+<div id="pinfo" class="pinfo"></div>
+<label>Estoque atual na prateleira<input id="fEst" type="number" min="0" step="any" inputmode="decimal"></label>
+<label>Quantidade que estou repondo<input id="fRep" type="number" min="0" step="any" inputmode="decimal"></label>
+<label>Desperdício (venceu/estragou)<input id="fDes" type="number" min="0" step="any" inputmode="decimal"></label>
+<button id="fAdd">Adicionar reposição</button></div>
+<p class="hint">Conte o estoque da prateleira ao chegar, <b>incluindo</b> o que está vencido. Depois informe quanto desse total foi para o desperdício.</p></div>
+<h3>Reposições do dia</h3><div class="scroll" id="dia"></div>
+<div class="panel prod" id="prod-box"></div>
+</section>
+<section id="rel" hidden><div class="panel"><div class="form"><label>De<input id="rDe" type="date"></label><label>Até<input id="rAte" type="date"></label><button id="rGo">Gerar relatório</button><button id="rXls" class="gold">Exportar para Excel</button></div></div><div class="scroll" id="rOut"></div></section>
+<section id="cfg" hidden></section>
+<section id="prodTab" hidden><div class="panel"><h3>Novo produto</h3><div class="form"><label>Código<input id="nCod"></label><label class="wide">Nome<input id="nNome"></label><label>Validade<input id="nVal" placeholder="7 DIAS"></label><label>Estoque desejado<input id="nDes" type="number" min="0"></label><button id="nAdd">Adicionar</button></div><div id="seedBox"></div></div><div id="plist"></div></section>
+</main></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script type="module" src="app.js"></script></body></html>
