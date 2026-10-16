@@ -33,7 +33,7 @@ $$('nav button').forEach(b=>b.addEventListener('click',()=>{$$('nav button').for
 // vendido = (estoque anterior - desperdício anterior + reposição anterior) - estoque atual
 function calc(list){
   const por={};list.forEach(r=>(por[r.pid]??=[]).push(r));
-  Object.values(por).forEach(a=>{a.sort((x,y)=>x.data<y.data?-1:1);a.forEach((r,i)=>{r.apos=r.est-r.desp+r.rep;const p=a[i-1];r.vend=p?p.apos-r.est:null;r.dias=p?Math.round((new Date(r.data)-new Date(p.data))/864e5):null})});
+  Object.values(por).forEach(a=>{a.sort((x,y)=>x.data<y.data?-1:1);a.forEach((r,i)=>{r.apos=r.est+r.rep;const p=a[i-1];r.vend=p?p.apos-r.est-r.desp:null;r.dias=p?Math.round((new Date(r.data)-new Date(p.data))/864e5):null})});
   return list;
 }
 const prodDe=id=>produtos.find(p=>p.id===id);
